@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic-Tac-Toe</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./assets/tailwind.css">
+    <script defer src="../dist/js/main.js"></script>
+</head>
+
+<body>
+    <div class="w-full h-screen flex justify-center align-center bg-gray-200">
+        <div class="game-container max-w-full shadow rounded-md bg-white my-auto">
+            <div class="header w-full text-center my-4">
+                <h1 class="text-center font-bold text-4xl sm:text-2xl text-gray-500">Tic Tac Toe</h1>
+            </div>
+            <div class="box w-full px-6 grid grid-cols-3 gap-4">
+                <button class="bg-gray-100 shadow w-20 h-20 rounded-md text-center board"></button>
+                <button class="bg-gray-100 shadow w-20 h-20 rounded-md text-center board"></button>
+                <button class="bg-gray-100 shadow w-20 h-20 rounded-md text-center board"></button>
+                <button class="bg-gray-100 shadow w-20 h-20 rounded-md text-center board"></button>
+                <button class="bg-gray-100 shadow w-20 h-20 rounded-md text-center board"></button>
+                <button class="bg-gray-100 shadow w-20 h-20 rounded-md text-center board"></button>
+                <button class="bg-gray-100 shadow w-20 h-20 rounded-md text-center board"></button>
+                <button class="bg-gray-100 shadow w-20 h-20 rounded-md text-center board"></button>
+                <button class="bg-gray-100 shadow w-20 h-20 rounded-md text-center board"></button>
+            </div>
+            <div class="mt-6 mb-4 w-full text-center">
+                <button class="px-10 py-2 rounded bg-gray-200 text-gray-600" id="restart">Restart</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="absolute hidden  top-0 left-0 w-full h-screen bg-gray-200 .bg-opacity-25" id="gameOverUser">
+        <div class="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
+            <div class="mt-3 text-center">
+                <div class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-green-100">
+                    <svg class="h-6 w-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                </div>
+                <h3 class="text-lg leading-6 font-medium text-gray-900"> Game Over </h3>
+                <div class="mt-2 px-7 py-3">
+                    <p class="text-sm text-gray-500">
+
+                        Congratulations! You Won
+                    </p>
+                </div>
+                <div class="items-center px-4 py-3">
+                    <button id="ok-btn"
+                        class="px-4 py-2 bg-green-500 text-white text-base font-medium rounded-md w-full shadow-sm hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-300">
+                        OK
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="absolute hidden top-0 left-0 w-full h-screen bg-gray-200 .bg-opacity-25" id="gameOverFailed">
+        <div class="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
+            <div class="mt-3 text-center">
+                <div class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-red-100">
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-red-600" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                </div>
+                <h3 class="text-lg leading-6 font-medium text-gray-900"> Game Over </h3>
+                <div class="mt-2 px-7 py-3">
+                    <p class="text-sm text-gray-500">
+
+                        Ooopps!!! You Loose
+                    </p>
+                </div>
+                <div class="items-center px-4 py-3">
+                    <button id="ok-btn-failed"
+                        class="px-4 py-2 bg-red-500 text-white text-base font-medium rounded-md w-full shadow-sm hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-300">
+                        OK
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <div class="absolute hidden top-0 left-0 w-full h-screen bg-gray-200 .bg-opacity-25" id="gameOverDraw">
+        <div class="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
+            <div class="mt-3 text-center">
+                <div class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-green-100">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-600" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636" />
+                    </svg>
+                </div>
+                <h3 class="text-lg leading-6 font-medium text-gray-900"> Game Over </h3>
+                <div class="mt-2 px-7 py-3">
+                    <p class="text-sm text-gray-500">
+
+                        Fair Play!
+                    </p>
+                </div>
+                <div class="items-center px-4 py-3">
+                    <button id="ok-btn-draw"
+                        class="px-4 py-2 bg-green-500 text-white text-base font-medium rounded-md w-full shadow-sm hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-300">
+                        OK
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>
